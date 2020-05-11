@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarAttribute(){
+        return "https://avatars.dicebear.com/v2/male/".$this->email.".svg?w=50&h=50";
+    }
+
+    public function timeline(){
+        return Tweet::where('user_id', $this->id)->latest()->get();
+    }
 }
