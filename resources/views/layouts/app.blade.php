@@ -23,13 +23,23 @@
     <div id="app">
         <section class="px-8 py-4 mb-6">
         <header class="container mx-auto">
-            <img src="images/logo.svg" alt="Tweety">
+            <img src="/images/logo.svg" alt="Tweety">
         </header>
     </section>
 
     <section class="px-8">
         <main class="container mx-auto">
-            @yield('content')
+            <div class="lg:flex justify-between">
+                <div class="lg:w-32">
+                    @include ('_sidebar-links')
+                </div>
+                <div class="lg:flex-1 lg:mx-10" style="max-width: 700px;">
+                    @yield('content')
+                </div>
+                <div class="lg:w-1/6">
+                    @include ('_friends-list')
+                </div>
+            </div>
         </main>
     </section>
     </div>

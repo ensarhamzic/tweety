@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/tweets', 'TweetsController@store');
+Route::middleware('auth')->group(function(){
+    Route::get('/tweets', 'TweetsController@index')->name('home');
+    Route::post('/tweets', 'TweetsController@store');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
